@@ -1,3 +1,11 @@
+# Custom For Project
+
+# Source code for external projects
+mrbayes-3.2.5*
+mrbayes_3.2.5*
+beagle-lib*
+
+
 # https://github.com/github/gitignore/blob/master/C.gitignore
 
 # Object files
