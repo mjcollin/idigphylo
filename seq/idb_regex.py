@@ -40,32 +40,51 @@ def parse(str, headers=None):
     return retval
 
 
-def triplify(parsed):
-    id_field = "first:field"
-
+def triplify(parsed, id_field):
     retval = []
     for k, v in parsed.iteritems():
         if k != id_field:
-            retval.append((k, parsed[id_field], v))
+            retval.append((parsed[id_field], k, v))
 
     return retval
 
 
+def read_options(opts):
+    retval = {}
+    retval["fn"] = opts[1]
+    retval["id_field"] = opts[2]
+    retval["fields"] = opts[3]
+    return retval
+
+# returns [] for unmatched tuples but flatMap() throws empty lists 
+# away so it's all good
+def regex_find(p, triple):
+    retval = []
+    #matches = p.search(triple[2])
+    for m in re.finditer(p, triple[2]):
+        #for m in matches.groups():
+            retval.append((triple[0], triple[1], triple[2], m.group(0)))
+        #return triple
+    return retval
+
 
 if __name__ == "__main__":
     sc = SparkContext(appName="idb_regex")
+    opts = read_options(sys.argv)
 
     #sc.setLogLevel(INFO)
-    fn = sys.argv[1]
-    records = sc.textFile(fn)
+    records = sc.textFile(opts["fn"])
 
     first_line = records.take(1)[0]
     headers = parse(first_line)    
 
     # filter removes header line which is going to be unique
     records = records.filter(lambda line: line != first_line)
-    parsed = records.flatMap(lambda x: triplify(parse(x.encode("utf8"), headers)) )
+    parsed = records.flatMap(lambda x: triplify(parse(x.encode("utf8"), headers), opts["id_field"]) )
 
-    filtered = parsed.filter(lambda triple: triple[0] == "second")
+    p = re.compile("(http.*[ $])")
+    p = re.compile("([\d]+)")
+    filtered = parsed.filter(lambda triple: triple[1] in opts["fields"])
+    matched = filtered.flatMap(lambda triple: regex_find(p, triple))
 
-    print(filtered.collect())
+    print(matched.collect())
