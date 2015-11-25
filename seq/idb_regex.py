@@ -54,6 +54,8 @@ def read_options(opts):
     retval["fn"] = opts[1]
     retval["id_field"] = opts[2]
     retval["fields"] = opts[3]
+    retval["outfn"] = opts[4]
+    retval["regex"] = opts[5]
     return retval
 
 # returns [] for unmatched tuples but flatMap() throws empty lists 
@@ -82,9 +84,19 @@ if __name__ == "__main__":
     records = records.filter(lambda line: line != first_line)
     parsed = records.flatMap(lambda x: triplify(parse(x.encode("utf8"), headers), opts["id_field"]) )
 
-    p = re.compile("(http.*[ $])")
-    p = re.compile("([\d]+)")
+    #p = re.compile("(http.*[ $])")
+    p = re.compile(opts["regex"])
     filtered = parsed.filter(lambda triple: triple[1] in opts["fields"])
     matched = filtered.flatMap(lambda triple: regex_find(p, triple))
 
-    print(matched.collect())
+    #print(matched.collect())
+    #matched.saveAsTextFile("hdfs://cloudera0.acis.ufl.edu:8020/user/mcollins/{0}".format(opts["outfn"]))
+
+    # http://apache-spark-user-list.1001560.n3.nabble.com/Iterator-over-RDD-in-PySpark-td11146.$
+    iter = matched._jrdd.toLocalIterator()
+    output = matched._collect_iterator_through_file(iter)
+    with open(opts["outfn"], "wb") as f:
+        csvwriter = unicodecsv.writer(f, "excel")
+        csvwriter.writerow(["id", "field", "value", "match"])
+        for (id, field, value, match) in output:
+            csvwriter.writerow([id, field, value, match])
