@@ -22,3 +22,9 @@ Probably a lot of false positives. What else could we look for?
 
 Input: JSON with list of fields and list of sequences
 Output: record ID, regex, field, matching value (can be multiples)
+
+What recordset to test it on?
+
+http://search.idigbio.org/v2/summary/top/records/?top_fields=%22recordset%22&rq=%7B%22data.dwc:associatedSequences%22:%7B%22type%22:%22exists%22%7D%7D
+
+Try http://portal.idigbio.org/portal/recordsets/edbd0bc4-c292-426b-9a6c-44bbccab2d11
