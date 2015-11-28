@@ -5,6 +5,10 @@ mrbayes-3.2.5*
 mrbayes_3.2.5*
 beagle-lib*
 
+# Data files
+*.csv
+*.db
+*.dat
 
 # https://github.com/github/gitignore/blob/master/C.gitignore
 
