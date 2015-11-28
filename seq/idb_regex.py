@@ -35,7 +35,7 @@ def parse(str, headers=None):
         for h in headers:
             retval[h] = ""
 
-        raise e
+        #raise e
 
     return retval
 
