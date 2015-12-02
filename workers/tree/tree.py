@@ -1,7 +1,7 @@
 import sys
 sys.path.append("../../lib")
 
-import db as database
+import database
 from celery import Celery
 from subprocess import call
 
@@ -16,18 +16,23 @@ def save(fn):
     '''Save the resulting tree in .nex format to the MySQL database
     '''
     with open("{0}.con.tre".format(fn), "r") as tree_file:
-        result = tree_file.read()
-    db = database.Db()
-    # FIXME: HERE
-    #db.connect()
-    #db.    
-
+        file_text = tree_file.read()
+    db = database.Database()
+    result = database.Result(job_id = "asdf",
+                             result = file_text,
+                             timestamp = db.mk_time()
+                            )
+    db.sess.add(result)
+    db.sess.commit()
 
 def run(fn):
     '''Execute MrBayes script
     '''
+    processors = 8
+
     with open("{0}.stdout".format(fn), "w") as out:
-        retval = call("mpirun -np 8 bin/mb {0}".format(fn), shell=True, stdout=out)
+        retval = call("mpirun -np {0} bin/mb {1}".format(processors, fn),
+                      shell=True, stdout=out)
     
     return retval == 0
 
@@ -41,3 +46,4 @@ if __name__ == "__main__":
 
     print("Running test with test data {0}, this may take a minute...".format(fn))
     print run(fn)
+    save(fn)
