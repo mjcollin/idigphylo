@@ -1,4 +1,5 @@
 import json
+import time
 from sqlalchemy import Column, ForeignKey, Integer, String, Text, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
@@ -7,7 +8,7 @@ from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
-class Results(Base):
+class Result(Base):
     __tablename__ = "results"
     id = Column(Integer, primary_key=True)
     job_id = Column(String(64))
@@ -24,13 +25,16 @@ class Test(Base):
 class Database:
 
     def __init__(self):
-        with open("../db.json", "r") as cred_file:
+        with open("/home/mcollins/db.json", "r") as cred_file:
             creds = json.load(cred_file)
         self.conn = create_engine(creds["connection_str"])
         Base.metadata.create_all(self.conn)
         Base.metadata.bind = self.conn
         DBSession = sessionmaker(bind=self.conn)
         self.sess = DBSession()
+
+    def mk_time(self):
+        return time.strftime('%Y-%m-%d %H:%M:%S')
 
 
 if __name__ == "__main__":
