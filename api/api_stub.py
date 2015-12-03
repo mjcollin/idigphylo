@@ -5,6 +5,7 @@ sys.path.append("../lib")
 sys.path.append("../workers")
 
 from tree.tree import build
+from align.align import msa
 
 opts = {}
 opts["data_file"] = "data.nex"
@@ -18,4 +19,6 @@ seqs["Pan"] = "AAGCTTCACCGGCGCAATTATCCTCATAATCGCCCACGGACTTACATCCTCATTATTATTCTGCC
 opts["seqs"] = seqs
 opts["seq_type"] = "dna"
 
-build.delay(opts)
+#build.delay(opts)
+
+msa.delay(opts)
