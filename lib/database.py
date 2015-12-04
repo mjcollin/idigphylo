@@ -17,6 +17,13 @@ class Result(Base):
     result = Column(Text)
     timestamp = Column(DateTime, nullable=False)
 
+class Sequence(Base):
+    __tablename__ = "sequences"
+    id = Column(Integer, primary_key=True)
+    idb_uuid = Column(String(36))
+    gb_id = Column(String(36))
+    seq = Column(Text)
+
 class Test(Base):
     __tablename__ = "test"
     id = Column(Integer, primary_key=True)
