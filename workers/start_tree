@@ -1,0 +1,3 @@
+#!/bin/bash
+
+celery -A tree worker -l info -n worker.tree -Q tree

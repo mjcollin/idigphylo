@@ -21,6 +21,10 @@ def build(opts):
     #FIXME
     #cleanup(fn)
 
+@app.task(name="tree.tree.pipeline")
+def pipeline(opts):
+    build(opts)
+
 def run(fn):
     '''Execute MrBayes script
     '''
@@ -87,12 +91,12 @@ END;
 
     # Sequence data file 
     opts["seq_lines"] = ""
-    for k, v in opts["seqs"].iteritems():
+    for k, v in opts["aligned_seqs"].iteritems():
         opts["seq_lines"] += "{0}	{1}\n".format(k, v)
         # Could use a check here to make sure everything is the same length
         # Otherwise this is a wasteful reassignment
         opts["seq_length"] = len(v)
-    opts["seq_count"] = len(opts["seqs"])
+    opts["seq_count"] = len(opts["aligned_seqs"])
     with open(data_fn, "w") as data_file:
         data_file.write(data_file_template.format(**opts))   
     
