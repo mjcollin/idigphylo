@@ -3,11 +3,11 @@ import sys
 sys.path.append("../lib")
 sys.path.append("../workers")
 
-from flask import Flask, jsonify
+from flask import Flask, request, jsonify
+import idigbio
+import uuid
 from database import Database, Sequence, Result
 from align.align import pipeline
-
-import idigbio
 
 
 app = Flask(__name__)
@@ -21,8 +21,11 @@ def tree_build():
     opts["fields"] = ["uuid"]
     opts["sort"] = ["uuid"]
 
-    opts["rq"] = {"genus": "acer"}
-    opts["limit"] = 10
+    opts["rq"] = request.args.get("rq")
+    opts["limit"] = request.args.get("limit", 10)
+
+    # Generate a uuid job id
+    opts["job_id"] = str(uuid.uuid4())
 
     idb = idigbio.json()
     results = idb.search_records(rq=opts["rq"], limit=opts["limit"], 
@@ -41,7 +44,7 @@ def tree_build():
         opts["raw_seqs"][seq.idb_uuid.replace("-", "_")] = seq.seq
 
     pipeline.delay(opts)
-    return jsonify({"return": True})
+    return jsonify({"job_id": opts["job_id"]})
 
 @app.route('/tree/view/<string:job_id>')
 def tree_view(job_id, methods=["GET", "POST"]):

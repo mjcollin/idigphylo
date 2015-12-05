@@ -17,7 +17,7 @@ from subprocess import call
 def build(opts):
     fn = setup(opts)
     run(fn)
-    save(fn)
+    save(fn, opts["job_id"])
     #FIXME
     #cleanup(fn)
 
@@ -39,13 +39,14 @@ def run(fn):
     os.chdir(cwd)
     return retval == 0
 
-def save(fn):
+def save(fn, job_id):
     '''Save the resulting tree in .nex format to the MySQL database
     '''
     with open("{0}.con.tre".format(fn), "r") as tree_file:
         file_text = tree_file.read()
     db = Database()
-    result = Result(job_id = "asdf",
+    result = Result(job_id = job_id,
+                    prog = "mrbayes",
                              result = file_text,
                              timestamp = db.mk_time()
                             )

@@ -20,7 +20,7 @@ from tree.tree import pipeline as next_pipeline
 def msa(opts):
     fn = setup(opts)
     run(fn)
-    save(fn)
+    save(fn, opts["job_id"])
     opts["aligned_seqs"] = load(fn)
 
     #FIXME
@@ -66,13 +66,13 @@ def run(fn):
     os.chdir(cwd)
     return retval == 0
 
-def save(fn):
+def save(fn, job_id):
     '''Save the resulting alignment in fasta to the MySQL database
     '''
     with open("{0}.out".format(fn), "r") as fasta_file:
         file_text = fasta_file.read()
     db = Database()
-    result = Result(job_id = "asdf",
+    result = Result(job_id = job_id,
                     prog = "clustalo",
                     result = file_text,
                     timestamp = db.mk_time()
