@@ -9,6 +9,8 @@ from tree.tree import build
 from align.align import msa
 from align.align import pipeline
 
+import idigbio
+
 opts = {}
 opts["data_file"] = "data.nex"
 
@@ -22,22 +24,41 @@ opts["data_file"] = "data.nex"
 # Build raw seqs from db lookup given ids, consider doing this as a worker
 # in the future if we move away from a static database.
 
-idb_uuids = ["23984",
-"995440",
-"81211",
-"5559384"]
+#idb_uuids = ["23984",
+#"995440",
+#"81211",
+#"5559384"]
+
+idb = idigbio.json()
+rq_ = {"genus": "acer"}
+limit_ = 10
+fields_ = ["uuid"]
+sort_ = ["uuid"]
+results = idb.search_records(rq=rq_, limit=limit_, fields=fields_, sort=sort_)
+#print len(results["items"])
+#print results["items"][0]["indexTerms"]["genus"]
+#exit(0)
+idb_uuids = []
+for rec in results["items"]:
+    idb_uuids.append(rec["indexTerms"]["uuid"])
+
+print idb_uuids
 
 db = Database()
 opts["raw_seqs"] = {}
 for seq in db.sess.query(Sequence).filter(Sequence.idb_uuid.in_(idb_uuids)):
-  opts["raw_seqs"][seq.idb_uuid] = seq.seq
+    # The "-" char messes up MrBayes even in the taxon name string field.
+    # Change that here and it will percolate through the output without
+    # affecting the data sources on the front end.
+    opts["raw_seqs"][seq.idb_uuid.replace("-", "_")] = seq.seq
+
+
 
 opts["seq_type"] = "dna"
+print opts
 
 #msa.delay(opts)
 #build.delay(opts)
 
+
 pipeline.delay(opts)
-
-
-#print opts
