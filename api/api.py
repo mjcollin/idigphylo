@@ -48,7 +48,15 @@ def tree_build():
 
 @app.route('/tree/view/<string:job_id>')
 def tree_view(job_id, methods=["GET", "POST"]):
-    return jsonify({"job_id": job_id})
+    db = Database()
+    trees = db.sess.query(Result).\
+            filter(Result.job_id==job_id).\
+            filter(Result.prog=="mrbayes").first()
+
+    if trees is not None:
+        return jsonify({"job_id": job_id, "tree": trees.result, "status":"done"})
+    else:
+        return jsonify({"job_id": job_id, "tree": "", "status": "pending"})
 
 if __name__ == '__main__':
     app.debug = True
