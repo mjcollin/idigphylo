@@ -10,6 +10,9 @@ beagle-lib*
 *.db
 *.dat
 
+# Database credentials
+db.json
+
 # https://github.com/github/gitignore/blob/master/C.gitignore
 
 # Object files
@@ -63,7 +66,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+#lib/
 lib64/
 parts/
 sdist/

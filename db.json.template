@@ -1,0 +1,4 @@
+{
+    "connection_str":
+        "mysql://user:passwordk@host/database"
+}
