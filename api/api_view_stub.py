@@ -4,7 +4,7 @@ import sys
 sys.path.append("../lib")
 
 from subprocess import call, check_output
-from database import Database, Sequence, Result
+from database import Database, Result
 from ete2 import PhyloTree
 
 
@@ -18,18 +18,23 @@ job_id = "7f63fc71-4a0f-4b91-a9f3-909bf95c1ae0"
 trees = db.sess.query(Result).\
         filter(Result.job_id==job_id).\
         filter(Result.prog=="mrbayes").first()
+aligned = db.sess.query(Result).\
+          filter(Result.job_id==job_id).\
+          filter(Result.prog=="clustalo").first()
 
 if trees is not None:
     # Convert NEXUS tree to Newick format with BioPerl script, was the only
     # thing I could find that would parse a MrBayes tree file.
     t = check_output("echo '{0}' | /usr/bin/bp_nexus2nh".format(trees.result), shell=True) 
 
+    s = aligned.result
+
     # Create tree, have to use a process call to run PhyloTree.render()
     # inside an X framebuffer since it uses Qt4 to render.
     # https://github.com/jhcepas/ete/issues/101
     #pt = PhyloTree(t)
     #pt.render('/var/www/html/treeview/test.svg')
-    call("/usr/bin/xvfb-run bin/ete_render.py '{0}' '{1}'".format(t, '/var/www/html/treeview/test.svg'), shell=True)
+    call("/usr/bin/xvfb-run bin/ete_render.py '{0}' '{1}' '{2}'".format(t, s, '/var/www/html/treeview/test.svg'), shell=True)
 
 # Look
 

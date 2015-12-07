@@ -1,9 +1,11 @@
 from __future__ import absolute_import
+
 import sys
+from subprocess import call, check_output
 sys.path.append("../lib")
 sys.path.append("../workers")
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 import idigbio
 import uuid
 from database import Database, Sequence, Result
@@ -57,6 +59,34 @@ def tree_view(job_id, methods=["GET", "POST"]):
         return jsonify({"job_id": job_id, "tree": trees.result, "status":"done"})
     else:
         return jsonify({"job_id": job_id, "tree": "", "status": "pending"})
+
+@app.route('/tree/render/<string:job_id>')
+def tree_render(job_id, methods=["GET", "POST"]):
+    out_fn = "/tmp/image.svg"
+
+    db = Database()
+    trees = db.sess.query(Result).\
+            filter(Result.job_id==job_id).\
+            filter(Result.prog=="mrbayes").first()
+    aligned = db.sess.query(Result).\
+              filter(Result.job_id==job_id).\
+              filter(Result.prog=="clustalo").first()
+
+    if trees is not None:  
+        # Convert NEXUS tree to Newick format with BioPerl script, was the only 
+        # thing I could find that would parse a MrBayes tree file.
+        t = check_output("echo '{0}' | /usr/bin/bp_nexus2nh".format(trees.result), shell=True)
+        s = aligned.result
+
+        # Create tree, have to use a process call to run PhyloTree.render()
+        # inside an X framebuffer since it uses Qt4 to render.
+        # https://github.com/jhcepas/ete/issues/101
+        call("/usr/bin/xvfb-run bin/ete_render.py '{0}' '{1}' '{2}'".format(t, s, out_fn), shell=True)
+                
+        return send_file(out_fn)
+
+    else:
+        return jsonify({"status":False})
 
 if __name__ == '__main__':
     app.debug = True
