@@ -95,7 +95,7 @@ def tree_build():
         opts["raw_seqs"][seq.idb_uuid.replace("-", "_")] = seq.seq
 
     pipeline.delay(opts)
-    return jsonify({"job_id": opts["job_id"]})
+    return jsonify({"job_id": opts["job_id"], "raw_seqs": opts["raw_seqs"], "rq": opts["rq"]})
 
 @app.route('/tree/view/<string:job_id>')
 @crossdomain(origin='*')
