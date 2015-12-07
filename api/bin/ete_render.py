@@ -10,5 +10,5 @@ if __name__ == "__main__":
     out = sys.argv[3]
 
     pt = PhyloTree(t)
-    pt.link_to_alignment(alignment=s)
+#    pt.link_to_alignment(alignment=s)
     pt.render(out)
