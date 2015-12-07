@@ -1,0 +1,49 @@
+id,field,value,match
+0cdf88e3-c979-4ecb-8cda-ce4053e2481f,dwc:associatedSequences,"cytb  EU180285 ,      ,      ,      ,      ,      ,      ,",EU180285
+6c454ff1-9e19-463b-8a4f-2fa8dc396fbd,dwc:associatedSequences,"cytb  GQ982553 , 12S ribosomal RNA  GQ982533 ,      ,      ,      ,      ,      ,",GQ982553
+6c454ff1-9e19-463b-8a4f-2fa8dc396fbd,dwc:associatedSequences,"cytb  GQ982553 , 12S ribosomal RNA  GQ982533 ,      ,      ,      ,      ,      ,",GQ982533
+669381c9-bf17-4fa4-9921-8003b73b64be,dwc:associatedSequences,"cytb  EU180284 ,      ,      ,      ,      ,      ,      ,",EU180284
+dd6bba91-1273-40a6-90ca-934d9c0edc56,dwc:associatedSequences,"cytb  GQ982555 , 12S ribosomal RNA  GQ982535 ,      ,      ,      ,      ,      ,",GQ982555
+dd6bba91-1273-40a6-90ca-934d9c0edc56,dwc:associatedSequences,"cytb  GQ982555 , 12S ribosomal RNA  GQ982535 ,      ,      ,      ,      ,      ,",GQ982535
+22f6383c-e318-4dae-ba94-aacdeae23f94,dwc:associatedSequences,"cytb  GQ982548 , 12S ribosomal RNA  GQ982528 ,      ,      ,      ,      ,      ,",GQ982548
+22f6383c-e318-4dae-ba94-aacdeae23f94,dwc:associatedSequences,"cytb  GQ982548 , 12S ribosomal RNA  GQ982528 ,      ,      ,      ,      ,      ,",GQ982528
+0c6d3af0-dd82-46df-a227-06f64c70c67e,dwc:associatedSequences,"pro-opiomelanocortin  EU108206  , GAPDH  GU583860  , cytb  EU116529  , C-mos  EU116698 , RAG1  EU108550 , NT3  EU108043 , BNDF  EU108377  ,",EU108206
+0c6d3af0-dd82-46df-a227-06f64c70c67e,dwc:associatedSequences,"pro-opiomelanocortin  EU108206  , GAPDH  GU583860  , cytb  EU116529  , C-mos  EU116698 , RAG1  EU108550 , NT3  EU108043 , BNDF  EU108377  ,",GU583860
+0c6d3af0-dd82-46df-a227-06f64c70c67e,dwc:associatedSequences,"pro-opiomelanocortin  EU108206  , GAPDH  GU583860  , cytb  EU116529  , C-mos  EU116698 , RAG1  EU108550 , NT3  EU108043 , BNDF  EU108377  ,",EU116529
+0c6d3af0-dd82-46df-a227-06f64c70c67e,dwc:associatedSequences,"pro-opiomelanocortin  EU108206  , GAPDH  GU583860  , cytb  EU116529  , C-mos  EU116698 , RAG1  EU108550 , NT3  EU108043 , BNDF  EU108377  ,",EU116698
+0c6d3af0-dd82-46df-a227-06f64c70c67e,dwc:associatedSequences,"pro-opiomelanocortin  EU108206  , GAPDH  GU583860  , cytb  EU116529  , C-mos  EU116698 , RAG1  EU108550 , NT3  EU108043 , BNDF  EU108377  ,",EU108550
+0c6d3af0-dd82-46df-a227-06f64c70c67e,dwc:associatedSequences,"pro-opiomelanocortin  EU108206  , GAPDH  GU583860  , cytb  EU116529  , C-mos  EU116698 , RAG1  EU108550 , NT3  EU108043 , BNDF  EU108377  ,",EU108043
+0c6d3af0-dd82-46df-a227-06f64c70c67e,dwc:associatedSequences,"pro-opiomelanocortin  EU108206  , GAPDH  GU583860  , cytb  EU116529  , C-mos  EU116698 , RAG1  EU108550 , NT3  EU108043 , BNDF  EU108377  ,",EU108377
+8bb041d8-52cc-495d-906a-c06cf7b8b7da,dwc:associatedSequences,"cytb  GQ982552 , 12S ribosomal RNA  GQ982532 ,      ,      ,      ,      ,      ,",GQ982552
+8bb041d8-52cc-495d-906a-c06cf7b8b7da,dwc:associatedSequences,"cytb  GQ982552 , 12S ribosomal RNA  GQ982532 ,      ,      ,      ,      ,      ,",GQ982532
+e439633f-7060-443e-8acb-7ec70b14dc47,dwc:associatedSequences,"cytb  EU180308 ,      ,      ,      ,      ,      ,      ,",EU180308
+543f38d1-55e6-41a3-a6eb-00271a7d4edb,dwc:associatedSequences,"cytb  GQ982550 , 12S ribosomal RNA  GQ982530 ,      ,      ,      ,      ,      ,",GQ982550
+543f38d1-55e6-41a3-a6eb-00271a7d4edb,dwc:associatedSequences,"cytb  GQ982550 , 12S ribosomal RNA  GQ982530 ,      ,      ,      ,      ,      ,",GQ982530
+7411e4f9-3a99-4c56-b068-477892be0947,dwc:associatedSequences,"cytb  EU180309 ,      ,      ,      ,      ,      ,      ,",EU180309
+0f7a8f07-950e-4ad5-a3e8-12b2e8e1e0a5,dwc:associatedSequences,"cytb  EU180306 ,      ,      ,      ,      ,      ,      ,",EU180306
+c5c053fc-e2dd-4934-a9a0-741c5351e378,dwc:associatedSequences,"cytb  EU180302 ,      ,      ,      ,      ,      ,      ,",EU180302
+cba3a90e-47b3-48fe-b9d5-322633647352,dwc:associatedSequences,"12S ribosomal RNA  DQ368668 ,      ,      ,      ,      ,      ,      ,",DQ368668
+4ce7d315-1675-4a69-9f95-ad22275a7937,dwc:associatedSequences,"cytb  GQ982549 , 12S ribosomal RNA  GQ982529  ,      ,      ,      ,      ,      ,",GQ982549
+4ce7d315-1675-4a69-9f95-ad22275a7937,dwc:associatedSequences,"cytb  GQ982549 , 12S ribosomal RNA  GQ982529  ,      ,      ,      ,      ,      ,",GQ982529
+a97e0b2b-15b6-45f8-9dea-bd7005a57e06,dwc:associatedSequences,"cytb  GQ982554 , 12S ribosomal RNA  GQ982534 ,      ,      ,      ,      ,      ,",GQ982554
+a97e0b2b-15b6-45f8-9dea-bd7005a57e06,dwc:associatedSequences,"cytb  GQ982554 , 12S ribosomal RNA  GQ982534 ,      ,      ,      ,      ,      ,",GQ982534
+7a29b560-37c2-497d-8172-ae80d3d6781c,dwc:associatedSequences,"cytb  EF137415 , ND4  EF137407 , C-mos  EF137422 , oocyte maturation factor  ABO34069 ,      ,      ,      ,",EF137415
+7a29b560-37c2-497d-8172-ae80d3d6781c,dwc:associatedSequences,"cytb  EF137415 , ND4  EF137407 , C-mos  EF137422 , oocyte maturation factor  ABO34069 ,      ,      ,      ,",EF137407
+7a29b560-37c2-497d-8172-ae80d3d6781c,dwc:associatedSequences,"cytb  EF137415 , ND4  EF137407 , C-mos  EF137422 , oocyte maturation factor  ABO34069 ,      ,      ,      ,",EF137422
+7a29b560-37c2-497d-8172-ae80d3d6781c,dwc:associatedSequences,"cytb  EF137415 , ND4  EF137407 , C-mos  EF137422 , oocyte maturation factor  ABO34069 ,      ,      ,      ,",BO34069
+4cc47f6c-1150-47e7-ab0b-d5f30091ed49,dwc:associatedSequences,"cytb  EU180305 ,      ,      ,      ,      ,      ,      ,",EU180305
+d9302025-d652-49be-885f-82e082cfe4a3,dwc:associatedSequences,"cytb  EU180304 ,      ,      ,      ,      ,      ,      ,",EU180304
+04474c96-9635-4807-bc5c-a40dc5f72327,dwc:associatedSequences,"pro-opiomelanocortin  EU108207 , NT3  EU108044 , BNDF  EU108378 , cytb  EU116530 , C-mos  EU116699 , RAG1  EU108551 ,      ,",EU108207
+04474c96-9635-4807-bc5c-a40dc5f72327,dwc:associatedSequences,"pro-opiomelanocortin  EU108207 , NT3  EU108044 , BNDF  EU108378 , cytb  EU116530 , C-mos  EU116699 , RAG1  EU108551 ,      ,",EU108044
+04474c96-9635-4807-bc5c-a40dc5f72327,dwc:associatedSequences,"pro-opiomelanocortin  EU108207 , NT3  EU108044 , BNDF  EU108378 , cytb  EU116530 , C-mos  EU116699 , RAG1  EU108551 ,      ,",EU108378
+04474c96-9635-4807-bc5c-a40dc5f72327,dwc:associatedSequences,"pro-opiomelanocortin  EU108207 , NT3  EU108044 , BNDF  EU108378 , cytb  EU116530 , C-mos  EU116699 , RAG1  EU108551 ,      ,",EU116530
+04474c96-9635-4807-bc5c-a40dc5f72327,dwc:associatedSequences,"pro-opiomelanocortin  EU108207 , NT3  EU108044 , BNDF  EU108378 , cytb  EU116530 , C-mos  EU116699 , RAG1  EU108551 ,      ,",EU116699
+04474c96-9635-4807-bc5c-a40dc5f72327,dwc:associatedSequences,"pro-opiomelanocortin  EU108207 , NT3  EU108044 , BNDF  EU108378 , cytb  EU116530 , C-mos  EU116699 , RAG1  EU108551 ,      ,",EU108551
+7be97ab8-9ee6-43b9-b4dc-d7e40d9f1be5,dwc:associatedSequences,"cytb  EU180303 ,      ,      ,      ,      ,      ,      ,",EU180303
+88c5f0c1-fde4-469f-a82c-d813dafe697c,dwc:associatedSequences,"cytb  GQ982545 , 12S ribosomal RNA  GQ982525 ,      ,      ,      ,      ,      ,",GQ982545
+88c5f0c1-fde4-469f-a82c-d813dafe697c,dwc:associatedSequences,"cytb  GQ982545 , 12S ribosomal RNA  GQ982525 ,      ,      ,      ,      ,      ,",GQ982525
+46b5d810-bc7c-4044-8ea2-b167f30b1592,dwc:associatedSequences,"cytb  GQ982547  , 12S ribosomal RNA  GQ982527 ,      ,      ,      ,      ,      ,",GQ982547
+46b5d810-bc7c-4044-8ea2-b167f30b1592,dwc:associatedSequences,"cytb  GQ982547  , 12S ribosomal RNA  GQ982527 ,      ,      ,      ,      ,      ,",GQ982527
+a1a79220-4c7d-4538-af8f-60f23c1f8e1f,dwc:associatedSequences,"cytb  EU180307 ,      ,      ,      ,      ,      ,      ,",EU180307
+a20d5c0a-bd09-4f0b-8f33-e8868c7a5e20,dwc:associatedSequences,"cytb  GQ982551 , 12S ribosomal RNA  GQ982531  ,      ,      ,      ,      ,      ,",GQ982551
+a20d5c0a-bd09-4f0b-8f33-e8868c7a5e20,dwc:associatedSequences,"cytb  GQ982551 , 12S ribosomal RNA  GQ982531  ,      ,      ,      ,      ,      ,",GQ982531

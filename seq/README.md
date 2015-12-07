@@ -34,3 +34,5 @@ Try http://portal.idigbio.org/portal/recordsets/edbd0bc4-c292-426b-9a6c-44bbccab
 Runs on small data sets ~8 MB but with large data sets, Spark builds a stage for each 128MB of input and runs them sequentially. Not sure what it's up to.
 
 time spark-submit --executor-cores 5 --num-executors 18 --executor-memory 9G idb_regex.py "hdfs://cloudera0.acis.ufl.edu:8020/user/mcollins/test_data/occurrence_md.csv" "id" "dwc:associatedSequences" "all_raw_ass_seq.csv" '([a-zA-Z]+)'
+
+time spark-submit --executor-cores 5 --num-executors 18 --executor-memory 9G idb_regex.py "hdfs://cloudera0.acis.ufl.edu:8020/user/mcollins/test_data/occurrence_raw_edbd.csv" "coreid" "dwc:associatedSequences" "edbd0bc4-c292-426b-9a6c-44bbccab2d11.sample" '[a-zA-Z]{1,2}\-?_?\d{5,6}'
