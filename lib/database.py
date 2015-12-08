@@ -1,6 +1,6 @@
 import json
 import time
-from sqlalchemy import Column, ForeignKey, Integer, String, Text, DateTime
+from sqlalchemy import Column, ForeignKey, Integer, String, Text, DateTime, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
@@ -23,6 +23,7 @@ class Sequence(Base):
     idb_uuid = Column(String(36))
     gb_id = Column(String(36))
     seq = Column(Text)
+    can_use = Column(Boolean)
 
 class Test(Base):
     __tablename__ = "test"

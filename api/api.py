@@ -88,7 +88,7 @@ def tree_build():
 
     db = Database()
     opts["raw_seqs"] = {}
-    for seq in db.sess.query(Sequence).filter(Sequence.idb_uuid.in_(idb_uuids)):
+    for seq in db.sess.query(Sequence).filter(Sequence.idb_uuid.in_(idb_uuids)).filter(Sequence.can_use == True):
         # The "-" char messes up MrBayes even in the taxon name string field.
         # Change that here and it will percolate through the output without
         # affecting the data sources on the front end.
