@@ -18,9 +18,12 @@ from tree.tree import pipeline as next_pipeline
 # below app name
 @app.task(name="align.align.msa")
 def msa(opts):
+    # Only for mk_time, connections pooled so not a total disaster
+    db = Database()
+    start_time = db.mk_time()
     fn = setup(opts)
     run(fn)
-    save(fn, opts["job_id"])
+    save(fn, opts["job_id"], start_time)
     opts["aligned_seqs"] = load(fn)
 
     #FIXME
@@ -66,7 +69,7 @@ def run(fn):
     os.chdir(cwd)
     return retval == 0
 
-def save(fn, job_id):
+def save(fn, job_id, start_time):
     '''Save the resulting alignment in fasta to the MySQL database
     '''
     with open("{0}.out".format(fn), "r") as fasta_file:
@@ -75,7 +78,8 @@ def save(fn, job_id):
     result = Result(job_id = job_id,
                     prog = "clustalo",
                     result = file_text,
-                    timestamp = db.mk_time()
+                    timestamp = db.mk_time(),
+                    starttime = start_time
                     )
     db.sess.add(result)
     db.sess.commit()

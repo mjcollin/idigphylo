@@ -15,9 +15,12 @@ from subprocess import call
 # below app name
 @app.task(name="tree.tree.build")
 def build(opts):
+    # Only for mk_time, connections pooled so not a total disaster
+    db = Database()
+    start_time = db.mk_time()
     fn = setup(opts)
     run(fn)
-    save(fn, opts["job_id"])
+    save(fn, opts["job_id"], start_time)
     #FIXME
     #cleanup(fn)
 
@@ -39,7 +42,7 @@ def run(fn):
     os.chdir(cwd)
     return retval == 0
 
-def save(fn, job_id):
+def save(fn, job_id, start_time):
     '''Save the resulting tree in .nex format to the MySQL database
     '''
     with open("{0}.con.tre".format(fn), "r") as tree_file:
@@ -48,7 +51,8 @@ def save(fn, job_id):
     result = Result(job_id = job_id,
                     prog = "mrbayes",
                              result = file_text,
-                             timestamp = db.mk_time()
+                             timestamp = db.mk_time(),
+                             starttime = start_time
                             )
     db.sess.add(result)
     db.sess.commit()

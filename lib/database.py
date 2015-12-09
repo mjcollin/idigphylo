@@ -16,6 +16,7 @@ class Result(Base):
     fn = Column(String(24))
     result = Column(Text)
     timestamp = Column(DateTime, nullable=False)
+    starttime = Column(DateTime)
 
 class Sequence(Base):
     __tablename__ = "sequences"
