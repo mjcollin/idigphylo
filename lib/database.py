@@ -5,6 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.pool import NullPool
 
 Base = declarative_base()
 
@@ -36,7 +37,7 @@ class Database:
     def __init__(self):
         with open("/home/mcollins/db.json", "r") as cred_file:
             creds = json.load(cred_file)
-        self.conn = create_engine(creds["connection_str"])
+        self.conn = create_engine(creds["connection_str"], poolclass=NullPool)
         Base.metadata.create_all(self.conn)
         Base.metadata.bind = self.conn
         DBSession = sessionmaker(bind=self.conn)
