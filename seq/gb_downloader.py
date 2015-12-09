@@ -12,7 +12,7 @@ to_do = db.sess.query(Sequence).\
 id = to_do.gb_id
 print id
 
-#id = "GQ982547"
+#id = "EU180285"
 try:
     response = urllib2.urlopen('http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=nuccore&id={0}&rettype=fasta&retmode=text'.format(id))
     fasta = response.read()
